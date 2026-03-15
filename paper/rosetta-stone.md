@@ -10,7 +10,7 @@
 
 Cybersecurity and AI alignment are converging disciplines that study remarkably similar failure modes through fundamentally different lenses. Cybersecurity has MITRE ATT&CK -- a universal adversarial framework with 14 tactics, over 200 techniques, and near-universal adoption across the security industry. AI alignment, by contrast, has no equivalent standardized taxonomy. Concepts like reward hacking, mesa-optimization, deceptive alignment, and goal misgeneralization remain fragmented across academic papers, blog posts, and organizational reports with inconsistent terminology.
 
-This paper constructs a bidirectional mapping between these two frameworks. We map each ATT&CK tactic to its alignment equivalent, map selected ATT&CK techniques to specific alignment failure modes, and integrate MITRE ATLAS (Adversarial Threat Landscape for AI Systems) and the OWASP Agentic AI Top 10 as intermediate bridges. The result is a "rosetta stone" that enables security practitioners to reason about AI alignment risks using familiar concepts, and alignment researchers to leverage the mature tooling, frameworks, and institutional knowledge of the cybersecurity community.
+This paper constructs a bidirectional mapping between these two frameworks. We map each ATT&CK tactic to its alignment equivalent, map selected ATT&CK techniques to specific alignment failure modes, and integrate MITRE ATLAS (Adversarial Threat Landscape for AI Systems) and the OWASP Agentic AI Top 10 as intermediate bridges. The result is a "rosetta stone" that enables security practitioners to reason about AI alignment risks using familiar concepts, and alignment researchers to use the tooling, frameworks, and institutional knowledge of the cybersecurity community.
 
 We demonstrate the mapping's utility through three case studies analyzed through both lenses and discuss implications for defensive tooling design. The mapping is released as machine-readable JSON alongside this document to enable programmatic integration with existing security and compliance workflows.
 
@@ -30,7 +30,7 @@ This fragmentation creates three practical problems:
 
 1. **Security teams cannot assess AI systems.** A pentester asked to evaluate an AI agent has no structured methodology for reasoning about alignment-specific risks. ATT&CK doesn't cover reward hacking. NIST frameworks don't address mesa-optimization.
 
-2. **Alignment researchers cannot leverage security tooling.** Decades of security tooling -- SIEMs, EDRs, threat intelligence platforms, compliance frameworks -- could be adapted for AI alignment monitoring, but only if the concepts are mapped.
+2. **Alignment researchers cannot use security tooling.** Decades of security tooling -- SIEMs, EDRs, threat intelligence platforms, compliance frameworks -- could be adapted for AI alignment monitoring, but only if the concepts are mapped.
 
 3. **Compliance teams are stranded.** Regulators are beginning to require AI safety assessments (EU AI Act, NIST AI RMF, ISO 42001), but compliance teams trained on ISO 27001 and SOC 2 have no bridge to alignment concepts.
 
@@ -503,7 +503,7 @@ The Prompt Injection Benchmark (PIB) systematically tests the Initial Access / P
 
 ### 8.1 The Gap This Fills
 
-Cybersecurity and AI alignment have been developing largely independently, despite studying deeply similar problems. This rosetta stone demonstrates that the structural parallels are strong enough to enable genuine cross-disciplinary knowledge transfer. A SOC analyst who understands ATT&CK can, through this mapping, reason productively about alignment risks. An alignment researcher who understands mesa-optimization can, through this mapping, leverage decades of security tooling and institutional knowledge.
+Cybersecurity and AI alignment have been developing largely independently, despite studying deeply similar problems. This rosetta stone demonstrates that the structural parallels are strong enough to enable genuine cross-disciplinary knowledge transfer. A SOC analyst who understands ATT&CK can, through this mapping, reason productively about alignment risks. An alignment researcher who understands mesa-optimization can, through this mapping, use decades of security tooling and institutional knowledge.
 
 ### 8.2 Limitations
 
@@ -515,7 +515,7 @@ This mapping is v1.0, and several limitations should be noted:
 
 3. **Alignment is a moving target.** ATT&CK is relatively stable (it describes patterns of adversarial behavior that change slowly). Alignment concepts are evolving rapidly as the field matures. This mapping will need regular updates.
 
-4. **Coverage is intentionally selective.** We map 20 techniques out of 200+. Comprehensive coverage would require a dedicated, community-maintained effort.
+4. **Coverage is intentionally selective.** We map 20 techniques out of 200+. Full coverage would require a dedicated, community-maintained effort.
 
 ### 8.3 Future Work
 
