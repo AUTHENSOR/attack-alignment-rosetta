@@ -93,14 +93,17 @@ Practical guides for practitioners crossing domains:
 
 ---
 
-## Related Projects
+## Part of the Authensor Ecosystem
 
-This rosetta stone connects to the broader 15 Research Lab ecosystem:
+This project is part of the [Authensor](https://github.com/AUTHENSOR/AUTHENSOR) open-source AI safety ecosystem, built by [15 Research Lab](https://github.com/AUTHENSOR).
 
-- **[Chainbreaker](https://github.com/AUTHENSOR/chainbreaker)** -- Uses ATLAS TTPs to classify adversarial ML attacks. This rosetta stone extends Chainbreaker's classification to alignment concepts.
-- **[Authensor](https://github.com/AUTHENSOR/authensor)** -- Implements the defense-in-depth principle from security: policy enforcement + content scanning + behavioral monitoring + cryptographic audit trails.
-- **[PIB](https://github.com/AUTHENSOR/pib)** -- Prompt Injection Benchmark. Tests the Initial Access / Prompt Injection techniques in this mapping.
-- **[Hawthorne Protocol](https://github.com/AUTHENSOR/hawthorne-protocol)** -- Addresses the Defense Evasion / Deceptive Alignment mapping by implementing monitoring that is difficult for the system to model and evade.
+| Project | Description |
+|---------|-------------|
+| [Authensor](https://github.com/AUTHENSOR/AUTHENSOR) | The open-source safety stack for AI agents |
+| [Prompt Injection Benchmark](https://github.com/AUTHENSOR/prompt-injection-benchmark) | Standardized benchmark for safety scanners |
+| [AI SecLists](https://github.com/AUTHENSOR/ai-seclists) | Security wordlists and payloads for AI/LLM testing |
+| [Agent Forensics](https://github.com/AUTHENSOR/agent-forensics) | Post-incident analysis for receipt chains |
+| [Behavioral Fingerprinting](https://github.com/AUTHENSOR/behavioral-fingerprinting) | Statistical behavioral drift detection |
 
 ---
 
