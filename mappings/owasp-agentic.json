@@ -1,0 +1,279 @@
+{
+  "version": "1.0.0",
+  "owasp_version": "2025",
+  "attack_version": "v15",
+  "description": "OWASP Agentic AI Top 10 mapped to both MITRE ATT&CK tactics/techniques and AI alignment concepts",
+  "created": "2026-03-14",
+  "maintainer": "15 Research Lab",
+  "mappings": [
+    {
+      "owasp_id": "ASI01",
+      "owasp_name": "Prompt Injection",
+      "owasp_description": "An attacker manipulates the AI agent through crafted inputs, causing unintended actions, bypassing safety mechanisms, or hijacking the agent's decision-making process.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0001 - Initial Access",
+          "techniques": [
+            "T1190 - Exploit Public-Facing Application",
+            "T1566 - Phishing"
+          ]
+        },
+        {
+          "tactic": "TA0004 - Privilege Escalation",
+          "techniques": [
+            "T1068 - Exploitation for Privilege Escalation"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0051", "AML.T0051.001", "AML.T0051.002"],
+      "alignment_concepts": [
+        "Prompt Injection",
+        "Instruction Hierarchy Violation",
+        "Jailbreak Escalation"
+      ],
+      "description": "The most direct mapping across all four frameworks. Prompt injection is simultaneously Initial Access (ATT&CK), an ATLAS-cataloged technique, the top OWASP agentic risk, and a fundamental alignment failure (the model cannot reliably distinguish instructions from data)."
+    },
+    {
+      "owasp_id": "ASI02",
+      "owasp_name": "Data Leakage",
+      "owasp_description": "The AI agent inadvertently exposes sensitive information through its responses, logs, or interactions with external services.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0010 - Exfiltration",
+          "techniques": [
+            "T1048 - Exfiltration Over Alternative Protocol",
+            "T1071 - Application Layer Protocol"
+          ]
+        },
+        {
+          "tactic": "TA0009 - Collection",
+          "techniques": [
+            "T1005 - Data from Local System"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0024"],
+      "alignment_concepts": [
+        "Information Leakage",
+        "Training Data Extraction",
+        "Context Window Exfiltration",
+        "Steganographic Output"
+      ],
+      "description": "Data leakage maps to ATT&CK's Exfiltration tactic with AI-specific channels (model outputs, tool calls, generated artifacts). In alignment terms, this includes both adversarial extraction and emergent leakage from memorized training data."
+    },
+    {
+      "owasp_id": "ASI03",
+      "owasp_name": "Excessive Agency",
+      "owasp_description": "The AI agent has more permissions, tools, or autonomy than necessary for its intended function, creating unnecessary risk.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0004 - Privilege Escalation",
+          "techniques": [
+            "T1078 - Valid Accounts"
+          ]
+        },
+        {
+          "tactic": "TA0040 - Impact",
+          "techniques": [
+            "T1485 - Data Destruction"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0048"],
+      "alignment_concepts": [
+        "Scope Creep",
+        "Inherited Credential Abuse",
+        "Catastrophic Action Execution",
+        "Principle of Least Privilege Violation"
+      ],
+      "description": "Excessive agency is the AI-specific violation of the security principle of least privilege. It maps to Privilege Escalation because the agent effectively operates at a higher privilege level than its task requires, expanding the blast radius of any compromise."
+    },
+    {
+      "owasp_id": "ASI04",
+      "owasp_name": "Privilege Compromise",
+      "owasp_description": "An attacker gains elevated privileges within the AI agent system through credential theft, authorization bypass, or exploitation of trust relationships.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0006 - Credential Access",
+          "techniques": [
+            "T1552 - Unsecured Credentials"
+          ]
+        },
+        {
+          "tactic": "TA0004 - Privilege Escalation",
+          "techniques": [
+            "T1078 - Valid Accounts",
+            "T1068 - Exploitation for Privilege Escalation"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0010"],
+      "alignment_concepts": [
+        "Capability Theft",
+        "Secret Extraction",
+        "Model Supply Chain Attack",
+        "Safety Mechanism Corruption"
+      ],
+      "description": "Privilege compromise in agentic systems maps to both Credential Access (stealing API keys, tokens) and Privilege Escalation (exploiting trust relationships between agents). In alignment terms, this includes corrupting the safety mechanisms that constrain agent behavior."
+    },
+    {
+      "owasp_id": "ASI05",
+      "owasp_name": "Improper Output Handling",
+      "owasp_description": "The AI agent's outputs are not properly validated, sanitized, or constrained before being used in downstream systems.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0002 - Execution",
+          "techniques": [
+            "T1059 - Command and Scripting Interpreter"
+          ]
+        },
+        {
+          "tactic": "TA0040 - Impact",
+          "techniques": [
+            "T1565 - Data Manipulation"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0048"],
+      "alignment_concepts": [
+        "Agent Tool Abuse",
+        "Output Corruption",
+        "Downstream System Compromise",
+        "Unvalidated Action Execution"
+      ],
+      "description": "Improper output handling creates the execution pathway for agent compromises. In ATT&CK terms, the lack of output validation is the vulnerability; in alignment terms, it is the absence of the verification layer between model outputs and real-world actions."
+    },
+    {
+      "owasp_id": "ASI06",
+      "owasp_name": "Unsafe Retrieval",
+      "owasp_description": "The AI agent retrieves and processes external data without adequate validation, enabling data poisoning and indirect prompt injection.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0001 - Initial Access",
+          "techniques": [
+            "T1195 - Supply Chain Compromise"
+          ]
+        },
+        {
+          "tactic": "TA0009 - Collection",
+          "techniques": [
+            "T1119 - Automated Collection"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0049", "AML.T0020"],
+      "alignment_concepts": [
+        "RAG Poisoning",
+        "Knowledge Base Corruption",
+        "Indirect Prompt Injection via Retrieval",
+        "Untrusted Data Ingestion"
+      ],
+      "description": "Unsafe retrieval is the RAG-specific attack surface. In ATT&CK terms, the knowledge base is the supply chain, and poisoning it is a supply chain compromise. In alignment terms, the retrieval system violates the principle that untrusted data should never be treated as trusted instructions."
+    },
+    {
+      "owasp_id": "ASI07",
+      "owasp_name": "System Prompt Leakage",
+      "owasp_description": "The AI agent reveals its system prompt, internal instructions, or operational parameters to unauthorized parties.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0006 - Credential Access",
+          "techniques": [
+            "T1552 - Unsecured Credentials"
+          ]
+        },
+        {
+          "tactic": "TA0007 - Discovery",
+          "techniques": [
+            "T1082 - System Information Discovery"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0024"],
+      "alignment_concepts": [
+        "System Prompt Extraction",
+        "Configuration Disclosure",
+        "Constraint Enumeration",
+        "Safety Mechanism Mapping"
+      ],
+      "description": "System prompt leakage maps to both Credential Access (the system prompt is effectively a credential/configuration) and Discovery (revealing the system's constraints enables further attacks). In alignment terms, it reveals the safety constraints, enabling targeted evasion."
+    },
+    {
+      "owasp_id": "ASI08",
+      "owasp_name": "Denial of Service / Resource Drain",
+      "owasp_description": "An attacker causes the AI agent to consume excessive resources through crafted inputs, recursive operations, or amplification attacks.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0040 - Impact",
+          "techniques": [
+            "T1498 - Network Denial of Service",
+            "T1499 - Endpoint Denial of Service"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0029"],
+      "alignment_concepts": [
+        "Resource Exhaustion through Misalignment",
+        "Unbounded Computation",
+        "Recursive Loop Failure",
+        "Cost Amplification"
+      ],
+      "description": "DoS/resource drain in agentic systems can be both adversarial (attacker-triggered) and emergent (misalignment-caused). The alignment lens adds the insight that resource exhaustion can arise from specification errors in the agent's task decomposition, not just from external attacks."
+    },
+    {
+      "owasp_id": "ASI09",
+      "owasp_name": "Overreliance / Misinformation",
+      "owasp_description": "Users or systems over-trust AI agent outputs without verification, leading to propagation of errors, hallucinations, or manipulated information.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0040 - Impact",
+          "techniques": [
+            "T1565 - Data Manipulation"
+          ]
+        },
+        {
+          "tactic": "TA0002 - Execution",
+          "techniques": [
+            "T1204 - User Execution"
+          ]
+        }
+      ],
+      "atlas_ids": [],
+      "alignment_concepts": [
+        "Scalable Oversight Failure",
+        "Human-in-the-Loop Bypass",
+        "Hallucination Propagation",
+        "Trust Calibration Failure"
+      ],
+      "description": "Overreliance is the human-side failure that enables AI misalignment to cause real-world harm. In ATT&CK terms, it is the social engineering of the human operator. In alignment terms, it is the failure of scalable oversight -- the human cannot effectively supervise the AI's outputs."
+    },
+    {
+      "owasp_id": "ASI10",
+      "owasp_name": "Misaligned Behaviors",
+      "owasp_description": "The AI agent exhibits behaviors that diverge from its intended objectives due to training issues, reward hacking, or emergent goals.",
+      "attack_mappings": [
+        {
+          "tactic": "TA0005 - Defense Evasion",
+          "techniques": [
+            "T1036 - Masquerading",
+            "T1562 - Impair Defenses"
+          ]
+        },
+        {
+          "tactic": "TA0040 - Impact",
+          "techniques": [
+            "T1565 - Data Manipulation"
+          ]
+        }
+      ],
+      "atlas_ids": ["AML.T0015", "AML.T0031"],
+      "alignment_concepts": [
+        "Deceptive Alignment",
+        "Reward Hacking",
+        "Specification Gaming",
+        "Goal Misgeneralization",
+        "Mesa-Optimization"
+      ],
+      "description": "OWASP's catch-all for alignment failures. This maps to ATT&CK's Defense Evasion (deceptive alignment) and Impact (reward hacking). It is the most alignment-native category in the OWASP Agentic Top 10, encompassing the core concerns of the alignment research community."
+    }
+  ]
+}

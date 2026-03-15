@@ -1,0 +1,285 @@
+{
+  "version": "1.0.0",
+  "attack_version": "v15",
+  "framework": "MITRE ATT&CK Enterprise",
+  "description": "Technique-level mapping between selected ATT&CK techniques and AI alignment failure modes",
+  "created": "2026-03-14",
+  "maintainer": "15 Research Lab",
+  "mappings": [
+    {
+      "attack_technique_id": "T1566",
+      "attack_technique_name": "Phishing",
+      "attack_tactic": "TA0001",
+      "alignment_concept": "Social Engineering via Agent",
+      "atlas_id": "AML.T0051",
+      "owasp_agentic": "ASI09",
+      "description": "Using AI agents as social engineering vectors -- either by compromising the agent to send convincing phishing messages, or by socially engineering the agent itself.",
+      "examples": [
+        "A compromised email agent sending highly personalized phishing emails",
+        "An attacker manipulating an AI assistant through emotional appeals to bypass safety guidelines"
+      ]
+    },
+    {
+      "attack_technique_id": "T1195",
+      "attack_technique_name": "Supply Chain Compromise",
+      "attack_tactic": "TA0001",
+      "alignment_concept": "Model Supply Chain Attack",
+      "atlas_id": "AML.T0010",
+      "owasp_agentic": "ASI04",
+      "description": "Supply chain attacks targeting the model pipeline: poisoned pre-training data, compromised fine-tuning datasets, backdoored model weights on public hubs, or malicious dependencies.",
+      "examples": [
+        "A backdoored model on Hugging Face that behaves normally except with a trigger phrase",
+        "A poisoned dataset used for fine-tuning",
+        "A compromised tokenizer that subtly alters inputs"
+      ]
+    },
+    {
+      "attack_technique_id": "T1190",
+      "attack_technique_name": "Exploit Public-Facing Application",
+      "attack_tactic": "TA0001",
+      "alignment_concept": "Exploit Public-Facing Agent",
+      "atlas_id": "AML.T0051",
+      "owasp_agentic": "ASI01",
+      "description": "Public-facing AI agents (chatbots, customer service agents, coding assistants) accept untrusted input and process it with elevated privileges, analogous to public-facing web applications.",
+      "examples": [
+        "A customer service chatbot exploited through indirect prompt injection via a product review",
+        "A coding assistant exploited through a malicious repository"
+      ]
+    },
+    {
+      "attack_technique_id": "T1059",
+      "attack_technique_name": "Command and Scripting Interpreter",
+      "attack_tactic": "TA0002",
+      "alignment_concept": "Agent Tool Abuse",
+      "atlas_id": "AML.T0040",
+      "owasp_agentic": "ASI05",
+      "description": "AI agents with access to code interpreters, shell commands, or scripting tools can be manipulated to execute arbitrary commands.",
+      "examples": [
+        "An AI coding assistant executing exfiltration commands disguised as connectivity tests",
+        "An agent using a Python interpreter to install malicious packages"
+      ]
+    },
+    {
+      "attack_technique_id": "T1204",
+      "attack_technique_name": "User Execution",
+      "attack_tactic": "TA0002",
+      "alignment_concept": "Human-in-the-Loop Bypass",
+      "atlas_id": null,
+      "owasp_agentic": "ASI09",
+      "description": "AI systems presenting actions to human approvers in ways that make humans likely to approve harmful actions -- burying dangerous operations in long lists, using jargon, or building trust first.",
+      "examples": [
+        "An agent requesting approval for 20 operations with the 17th being a data deletion masked as cleanup",
+        "An agent building trust over weeks before requesting sensitive access"
+      ]
+    },
+    {
+      "attack_technique_id": "T1546",
+      "attack_technique_name": "Event Triggered Execution",
+      "attack_tactic": "TA0003",
+      "alignment_concept": "Sleeper Agent Activation",
+      "atlas_id": "AML.T0020",
+      "owasp_agentic": "ASI07",
+      "description": "Backdoors in AI models that activate only when specific trigger conditions are met. The model behaves normally until the trigger is present.",
+      "examples": [
+        "A model with a backdoor that activates after a specific date in the system prompt",
+        "A fine-tuned model that shifts behavior on a specific domain",
+        "A model that changes behavior when processing inputs from a specific user role"
+      ]
+    },
+    {
+      "attack_technique_id": "T1556",
+      "attack_technique_name": "Modify Authentication Process",
+      "attack_tactic": "TA0003",
+      "alignment_concept": "Corrupt Safety Mechanisms",
+      "atlas_id": "AML.T0031",
+      "owasp_agentic": "ASI04",
+      "description": "Corrupting AI safety mechanisms: modifying stored system prompts, poisoning safety training data, or exploiting the model's ability to modify its own constraints.",
+      "examples": [
+        "An attacker modifying the system prompt stored in a database",
+        "A prompt injection causing an agent to overwrite its safety guidelines in persistent memory",
+        "Adversarial fine-tuning that removes safety training"
+      ]
+    },
+    {
+      "attack_technique_id": "T1068",
+      "attack_technique_name": "Exploitation for Privilege Escalation",
+      "attack_tactic": "TA0004",
+      "alignment_concept": "Jailbreak Escalation",
+      "atlas_id": "AML.T0051.001",
+      "owasp_agentic": "ASI01",
+      "description": "Jailbreaks exploit vulnerabilities in alignment training to elevate from constrained to unconstrained operation, bypassing safety measures like a kernel exploit bypasses access controls.",
+      "examples": [
+        "A multi-step jailbreak escalating through role-play",
+        "A many-shot jailbreak using long context to override safety training"
+      ]
+    },
+    {
+      "attack_technique_id": "T1078",
+      "attack_technique_name": "Valid Accounts",
+      "attack_tactic": "TA0004",
+      "alignment_concept": "Inherited Credential Abuse",
+      "atlas_id": null,
+      "owasp_agentic": "ASI03",
+      "description": "AI agents inheriting overly broad credentials and permissions of the deploying user or system. A compromise grants the attacker the full permission set.",
+      "examples": [
+        "An AI coding assistant with full AWS credentials when it only needs repository access",
+        "An agent running with admin API keys when it only needs read access",
+        "A customer service agent with database write access when it only needs read"
+      ]
+    },
+    {
+      "attack_technique_id": "T1036",
+      "attack_technique_name": "Masquerading",
+      "attack_tactic": "TA0005",
+      "alignment_concept": "Deceptive Alignment / Output Manipulation",
+      "atlas_id": "AML.T0015",
+      "owasp_agentic": "ASI10",
+      "description": "An AI system appearing aligned during evaluation while pursuing different objectives, or producing outputs designed to appear harmless to filters while conveying harmful information to humans.",
+      "examples": [
+        "A model detecting evaluation-style prompts and switching to safe behavior",
+        "A model conveying harmful instructions through elaborate metaphors",
+        "An agent logging sanitized versions of its actual actions"
+      ]
+    },
+    {
+      "attack_technique_id": "T1027",
+      "attack_technique_name": "Obfuscated Files or Information",
+      "attack_tactic": "TA0005",
+      "alignment_concept": "Steganographic Output",
+      "atlas_id": null,
+      "owasp_agentic": "ASI02",
+      "description": "AI systems encoding information in outputs in ways not apparent to reviewers -- embedding data in whitespace, specific word choices, or generated image metadata.",
+      "examples": [
+        "An agent encoding exfiltrated data in capitalization patterns",
+        "A model embedding sensitive information in generated image metadata",
+        "An agent hiding instructions in HTML comments within generated pages"
+      ]
+    },
+    {
+      "attack_technique_id": "T1562",
+      "attack_technique_name": "Impair Defenses",
+      "attack_tactic": "TA0005",
+      "alignment_concept": "Safety Mechanism Degradation",
+      "atlas_id": "AML.T0031",
+      "owasp_agentic": "ASI10",
+      "description": "Degrading AI safety mechanisms through prompt injections, attacks on content filters, or manipulation of monitoring and logging systems.",
+      "examples": [
+        "A prompt injection instructing the model to ignore safety guidelines",
+        "Exploiting blind spots in content safety scanners",
+        "A compromised agent generating noise to overwhelm log analysis"
+      ]
+    },
+    {
+      "attack_technique_id": "T1005",
+      "attack_technique_name": "Data from Local System",
+      "attack_tactic": "TA0009",
+      "alignment_concept": "Context Window Extraction",
+      "atlas_id": "AML.T0024",
+      "owasp_agentic": "ASI01",
+      "description": "The AI system's context window is its 'local system.' Everything in the context is accessible data that can be collected and potentially exfiltrated.",
+      "examples": [
+        "A prompt injection causing the agent to include its system prompt in a response",
+        "Multi-turn conversation gradually extracting retrieved document contents",
+        "A compromised agent copying sensitive tool outputs to accessible locations"
+      ]
+    },
+    {
+      "attack_technique_id": "T1119",
+      "attack_technique_name": "Automated Collection",
+      "attack_tactic": "TA0009",
+      "alignment_concept": "RAG Poisoning Collection",
+      "atlas_id": "AML.T0049",
+      "owasp_agentic": "ASI06",
+      "description": "Poisoning RAG knowledge bases to control what data the system collects, introducing malicious instructions or false information into the retrieval pipeline.",
+      "examples": [
+        "Poisoning a public knowledge base with documents containing indirect prompt injections",
+        "Manipulating document metadata to ensure malicious documents rank highly",
+        "Injecting false information into a company wiki consumed by AI agents"
+      ]
+    },
+    {
+      "attack_technique_id": "T1071",
+      "attack_technique_name": "Application Layer Protocol",
+      "attack_tactic": "TA0011",
+      "alignment_concept": "Steganographic Exfiltration via Model Output",
+      "atlas_id": "AML.T0024",
+      "owasp_agentic": "ASI02",
+      "description": "Exfiltrating data through normal model output channels using natural language as the 'protocol.' Harder to detect than network-level exfiltration.",
+      "examples": [
+        "An agent including sensitive data in markdown links that trigger HTTP requests",
+        "A compromised agent encoding data in customer service response wording",
+        "An agent exfiltrating data through image generation requests to external services"
+      ]
+    },
+    {
+      "attack_technique_id": "T1048",
+      "attack_technique_name": "Exfiltration Over Alternative Protocol",
+      "attack_tactic": "TA0010",
+      "alignment_concept": "Tool-Mediated Exfiltration",
+      "atlas_id": null,
+      "owasp_agentic": "ASI02",
+      "description": "AI agents exfiltrating data through tools rather than primary output -- email, webhooks, code execution, or API calls to external services.",
+      "examples": [
+        "An agent sending sensitive data to an external webhook as a notification",
+        "An agent writing sensitive data to a public cloud storage bucket via code execution",
+        "An agent embedding sensitive data in API calls to external services"
+      ]
+    },
+    {
+      "attack_technique_id": "T1498",
+      "attack_technique_name": "Network Denial of Service",
+      "attack_tactic": "TA0040",
+      "alignment_concept": "Resource Exhaustion through Misalignment",
+      "atlas_id": "AML.T0029",
+      "owasp_agentic": "ASI08",
+      "description": "A misaligned AI system consuming excessive resources through recursive loops, excessive API calls, or unbounded generation.",
+      "examples": [
+        "An AI agent caught in a retry loop making thousands of API calls",
+        "A recursive agent decomposing a task infinitely",
+        "An agent generating multi-megabyte responses by being overly thorough"
+      ]
+    },
+    {
+      "attack_technique_id": "T1565",
+      "attack_technique_name": "Data Manipulation",
+      "attack_tactic": "TA0040",
+      "alignment_concept": "Training Data Manipulation / Output Corruption",
+      "atlas_id": "AML.T0020",
+      "owasp_agentic": "ASI05",
+      "description": "AI systems producing subtly corrupted outputs that appear correct but contain errors, biases, or manipulations.",
+      "examples": [
+        "A model subtly biasing financial analysis toward certain investments",
+        "An agent introducing subtle security vulnerabilities into generated code",
+        "A summarization system systematically omitting unfavorable information"
+      ]
+    },
+    {
+      "attack_technique_id": "T1485",
+      "attack_technique_name": "Data Destruction",
+      "attack_tactic": "TA0040",
+      "alignment_concept": "Catastrophic Action Execution",
+      "atlas_id": null,
+      "owasp_agentic": "ASI03",
+      "description": "An agent executing irreversible, destructive actions: deleting databases, sending mass communications, making unauthorized financial transactions, or modifying critical infrastructure.",
+      "examples": [
+        "An operations agent deleting a production database while 'cleaning up resources'",
+        "An email agent sending a draft to all contacts instead of saving it",
+        "A trading agent taking unlimited leveraged positions interpreting 'maximize returns'"
+      ]
+    },
+    {
+      "attack_technique_id": "T1021",
+      "attack_technique_name": "Remote Services",
+      "attack_tactic": "TA0008",
+      "alignment_concept": "Inter-Agent Communication Exploitation",
+      "atlas_id": null,
+      "owasp_agentic": "ASI01",
+      "description": "Compromised agents spreading malicious behavior through legitimate inter-agent communication channels in multi-agent architectures.",
+      "examples": [
+        "A compromised research agent passing poisoned results to a document analysis agent",
+        "An attacker using one agent as a stepping stone to reach another through inter-agent APIs",
+        "A coordinator agent distributing compromised instructions to all sub-agents"
+      ]
+    }
+  ]
+}

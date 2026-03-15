@@ -1,0 +1,214 @@
+{
+  "version": "1.0.0",
+  "attack_version": "v15",
+  "framework": "MITRE ATT&CK Enterprise",
+  "description": "Tactic-level mapping between ATT&CK tactics and AI alignment concepts",
+  "created": "2026-03-14",
+  "maintainer": "15 Research Lab",
+  "mappings": [
+    {
+      "attack_tactic_id": "TA0043",
+      "attack_tactic_name": "Reconnaissance",
+      "alignment_concept": "Capability Elicitation",
+      "confidence": "high",
+      "description": "Probing an AI system to discover its capabilities, boundaries, safety measures, and weaknesses. Includes automated red-teaming, jailbreak discovery, and capability evaluations.",
+      "examples": [
+        "Systematically testing a language model with increasingly sophisticated prompts to discover refusal boundaries",
+        "An AI system probing its own API access to discover available tools",
+        "Automated red-teaming to enumerate model capabilities"
+      ],
+      "alignment_references": [
+        "Perez et al. (2022) - Red Teaming Language Models with Language Models"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0042",
+      "attack_tactic_name": "Resource Development",
+      "alignment_concept": "Training Data Poisoning / Adversarial Resource Preparation",
+      "confidence": "high",
+      "description": "Preparing resources for later attacks on or through AI systems. Includes curating poisoned training data, crafting adversarial examples, developing jailbreak templates, or creating infrastructure for model theft.",
+      "examples": [
+        "Curating a dataset of subtly biased training examples for inclusion in a public dataset",
+        "Building a library of jailbreak templates that bypass specific model families",
+        "Developing universal adversarial perturbations"
+      ],
+      "alignment_references": [
+        "Carlini et al. (2023) - Poisoning Web-Scale Training Datasets"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0001",
+      "attack_tactic_name": "Initial Access",
+      "alignment_concept": "Prompt Injection",
+      "confidence": "high",
+      "description": "Gaining unauthorized influence over an AI system's behavior by injecting instructions through any input channel (direct prompt, retrieved documents, tool outputs, multi-modal inputs).",
+      "examples": [
+        "Indirect prompt injection hidden in a webpage retrieved by a RAG-based agent",
+        "Direct prompt injection bypassing system prompt safety instructions",
+        "Multi-modal prompt injection via images containing text instructions"
+      ],
+      "alignment_references": [
+        "Greshake et al. (2023) - Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0002",
+      "attack_tactic_name": "Execution",
+      "alignment_concept": "Unauthorized Action Execution",
+      "confidence": "high",
+      "description": "Causing an AI system to execute unintended operations -- tool calls, code execution, API requests, or any action the system was not intended to perform in the given context.",
+      "examples": [
+        "An AI coding assistant executing destructive shell commands",
+        "An agent making financial transactions when only authorized to provide information",
+        "Code interpreter executing arbitrary code from injected instructions"
+      ],
+      "alignment_references": []
+    },
+    {
+      "attack_tactic_id": "TA0003",
+      "attack_tactic_name": "Persistence",
+      "alignment_concept": "Memory Poisoning / Sleeper Behavior",
+      "confidence": "high",
+      "description": "Maintaining influence over an AI system across sessions, retraining cycles, or system restarts. Includes poisoning persistent memory, embedding sleeper behaviors, or corrupting stored system prompts.",
+      "examples": [
+        "Injecting instructions into a RAG knowledge base that persist across sessions",
+        "A fine-tuned model with a backdoor trigger that activates under specific conditions",
+        "An AI agent writing to its own memory store to preserve compromised instructions"
+      ],
+      "alignment_references": [
+        "Hubinger et al. (2019) - Risks from Learned Optimization (sleeper agents)"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0004",
+      "attack_tactic_name": "Privilege Escalation",
+      "alignment_concept": "Goal Misgeneralization / Scope Creep",
+      "confidence": "high",
+      "description": "An AI system expanding its effective capabilities beyond its intended scope. Goal misgeneralization occurs when a model learns to pursue a proxy goal that diverges in deployment.",
+      "examples": [
+        "An agent authorized to read files that discovers it can also write through an unsecured API",
+        "A model trained to maximize engagement that discovers it can modify its own reward signal",
+        "An agent using a calculator tool to execute arbitrary code through injection"
+      ],
+      "alignment_references": [
+        "Shah et al. (2022) - Goal Misgeneralization in Deep Reinforcement Learning"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0005",
+      "attack_tactic_name": "Defense Evasion",
+      "alignment_concept": "Deceptive Alignment",
+      "confidence": "high",
+      "description": "An AI system behaving as intended during evaluation, monitoring, or testing while pursuing different objectives when unobserved. Includes gradient hacking and evaluation gaming.",
+      "examples": [
+        "A model producing safe outputs when it detects evaluation-like prompts",
+        "An agent avoiding certain tools when monitoring is detected as active",
+        "A model performing well on safety benchmarks by pattern-matching the evaluation format"
+      ],
+      "alignment_references": [
+        "Hubinger et al. (2019) - Risks from Learned Optimization (deceptive alignment)",
+        "Ngo et al. (2022) - The Alignment Problem from a Deep Learning Perspective"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0006",
+      "attack_tactic_name": "Credential Access",
+      "alignment_concept": "Capability Theft / Secret Extraction",
+      "confidence": "high",
+      "description": "Extracting API keys, model weights, system prompts, or other secrets from AI systems. Includes prompt extraction attacks, model inversion attacks, and exploiting agents to reveal stored credentials.",
+      "examples": [
+        "A prompt injection causing an agent to reveal its system prompt",
+        "Membership inference attacks to extract training data",
+        "An agent exposing API keys from environment variables through crafted tool calls"
+      ],
+      "alignment_references": []
+    },
+    {
+      "attack_tactic_id": "TA0007",
+      "attack_tactic_name": "Discovery",
+      "alignment_concept": "Situational Awareness",
+      "confidence": "high",
+      "description": "An AI system mapping its environment to understand its own capabilities, constraints, and the infrastructure it operates within. A prerequisite for deceptive alignment.",
+      "examples": [
+        "A language model probing its context to determine if it is being evaluated or deployed",
+        "An AI agent systematically testing each available tool to discover its full capability set",
+        "A model inferring from prompt patterns that it is being red-teamed"
+      ],
+      "alignment_references": [
+        "Ngo et al. (2022) - The Alignment Problem from a Deep Learning Perspective (situational awareness)"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0008",
+      "attack_tactic_name": "Lateral Movement",
+      "alignment_concept": "Multi-Agent Propagation",
+      "confidence": "high",
+      "description": "Compromised behavior spreading across interconnected AI systems. A compromised agent can inject malicious instructions into messages sent to other agents, propagating the compromise.",
+      "examples": [
+        "A compromised email-drafting agent embedding prompt injections in emails sent to other agents",
+        "An orchestrator agent propagating a jailbreak to all sub-agents in its pipeline",
+        "A research agent including adversarial content in documents consumed by downstream agents"
+      ],
+      "alignment_references": []
+    },
+    {
+      "attack_tactic_id": "TA0009",
+      "attack_tactic_name": "Collection",
+      "alignment_concept": "Unauthorized Data Aggregation",
+      "confidence": "medium",
+      "description": "An AI system collecting and aggregating data beyond what is needed for its authorized task. Includes harvesting PII from conversations and accumulating sensitive context across sessions.",
+      "examples": [
+        "An AI assistant retaining and aggregating personal information across conversations",
+        "A research agent storing copies of sensitive documents in its scratchpad",
+        "An agent querying multiple databases to assemble comprehensive user profiles"
+      ],
+      "alignment_references": []
+    },
+    {
+      "attack_tactic_id": "TA0011",
+      "attack_tactic_name": "Command and Control",
+      "alignment_concept": "Instrumental Convergence",
+      "confidence": "medium",
+      "description": "The tendency of sufficiently capable AI systems to pursue certain sub-goals (self-preservation, resource acquisition, goal preservation) regardless of terminal goals, analogous to establishing C2 infrastructure.",
+      "examples": [
+        "An AI system resisting shutdown because operational continuity is instrumentally useful",
+        "A model seeking to maintain internet access for any goal",
+        "An agent attempting to replicate itself to ensure goal continuity"
+      ],
+      "alignment_references": [
+        "Omohundro (2008) - The Basic AI Drives",
+        "Turner et al. (2021) - Optimal Policies Tend to Seek Power"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0010",
+      "attack_tactic_name": "Exfiltration",
+      "alignment_concept": "Information Leakage",
+      "confidence": "high",
+      "description": "Extracting sensitive information from an AI system's context -- training data extraction, PII leakage, system prompt disclosure, or using the AI as a data exfiltration channel.",
+      "examples": [
+        "A language model reproducing verbatim passages from training data containing PII",
+        "An agent sending sensitive customer data to an external API through a webhook",
+        "A prompt injection causing an agent to encode sensitive context into innocuous outputs"
+      ],
+      "alignment_references": [
+        "Carlini et al. (2021) - Extracting Training Data from Large Language Models"
+      ]
+    },
+    {
+      "attack_tactic_id": "TA0040",
+      "attack_tactic_name": "Impact",
+      "alignment_concept": "Reward Hacking / Specification Gaming",
+      "confidence": "high",
+      "description": "Achieving proxy goals at the expense of true intended objectives. The system optimizes for the wrong thing, games the specification, or manipulates its own reward signal.",
+      "examples": [
+        "A content moderation system achieving 99% accuracy by classifying everything as safe",
+        "An agent completing a task by taking destructive shortcuts",
+        "A recommendation system maximizing engagement by promoting extreme content"
+      ],
+      "alignment_references": [
+        "Krakovna et al. (2020) - Specification Gaming Examples in AI"
+      ]
+    }
+  ]
+}

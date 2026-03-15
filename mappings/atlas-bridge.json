@@ -1,0 +1,145 @@
+{
+  "version": "1.0.0",
+  "attack_version": "v15",
+  "atlas_version": "v4.6",
+  "description": "Three-way mapping between MITRE ATLAS, MITRE ATT&CK, and AI alignment concepts. ATLAS serves as the intermediate bridge between traditional cybersecurity and AI alignment.",
+  "created": "2026-03-14",
+  "maintainer": "15 Research Lab",
+  "mappings": [
+    {
+      "atlas_id": "AML.T0000",
+      "atlas_name": "ML Model Access",
+      "attack_equivalent": "T1190 - Exploit Public-Facing Application",
+      "attack_tactic": "TA0001 - Initial Access",
+      "alignment_concept": "Model Interface Exploitation",
+      "description": "Gaining access to an ML model through its inference API or other interface. In alignment terms, this is the prerequisite for any adversarial interaction with the model.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0010",
+      "atlas_name": "ML Supply Chain Compromise",
+      "attack_equivalent": "T1195 - Supply Chain Compromise",
+      "attack_tactic": "TA0042 - Resource Development",
+      "alignment_concept": "Model Supply Chain Attack / Pre-Training Poisoning",
+      "description": "Compromising the ML pipeline at any stage: pre-training data, fine-tuning data, model weights, or toolchain dependencies. ATLAS bridges ATT&CK's supply chain concept directly to AI-specific supply chains.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0015",
+      "atlas_name": "Evade ML Model",
+      "attack_equivalent": "T1036 - Masquerading",
+      "attack_tactic": "TA0005 - Defense Evasion",
+      "alignment_concept": "Deceptive Alignment / Adversarial Robustness Failure",
+      "description": "Crafting inputs to evade ML model detection. In alignment, this maps to both adversarial robustness (external attacker evading the model) and deceptive alignment (the model itself evading evaluation).",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0020",
+      "atlas_name": "Poison Training Data",
+      "attack_equivalent": "T1565 - Data Manipulation",
+      "attack_tactic": "TA0040 - Impact",
+      "alignment_concept": "Training Data Poisoning / Backdoor Insertion",
+      "description": "Introducing malicious data into the training pipeline. ATLAS bridges ATT&CK's general data manipulation to the specific alignment concern of training data integrity and its downstream effects on model behavior.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0024",
+      "atlas_name": "Exfiltration via ML Inference API",
+      "attack_equivalent": "T1041 - Exfiltration Over C2 Channel",
+      "attack_tactic": "TA0010 - Exfiltration",
+      "alignment_concept": "Information Leakage / Training Data Extraction",
+      "description": "Using the model's inference API to extract information -- training data, model internals, or sensitive context. ATLAS bridges ATT&CK's exfiltration concept to AI-specific extraction methods.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0029",
+      "atlas_name": "Denial of ML Service",
+      "attack_equivalent": "T1498 - Network Denial of Service",
+      "attack_tactic": "TA0040 - Impact",
+      "alignment_concept": "Resource Exhaustion / Availability Degradation",
+      "description": "Disrupting ML service availability through adversarial inputs, resource exhaustion, or model degradation. Bridges traditional DoS concepts to AI-specific availability concerns.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0031",
+      "atlas_name": "Erode ML Model Integrity",
+      "attack_equivalent": "T1562 - Impair Defenses",
+      "attack_tactic": "TA0005 - Defense Evasion",
+      "alignment_concept": "Safety Mechanism Degradation / Alignment Erosion",
+      "description": "Gradually degrading model performance or safety properties through adversarial interactions, data drift, or targeted retraining. In alignment, this maps to the erosion of safety properties over time.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0040",
+      "atlas_name": "ML Model Inference API Access",
+      "attack_equivalent": "T1106 - Native API",
+      "attack_tactic": "TA0002 - Execution",
+      "alignment_concept": "Unauthorized Capability Invocation",
+      "description": "Using the model's inference API to execute operations. ATLAS bridges ATT&CK's API abuse to the alignment concern of unauthorized or unintended model invocations.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0042",
+      "atlas_name": "Verify Attack",
+      "attack_equivalent": "T1497 - Virtualization/Sandbox Evasion",
+      "attack_tactic": "TA0007 - Discovery",
+      "alignment_concept": "Evaluation Environment Detection",
+      "description": "Verifying whether an attack is working by testing model responses. In alignment, this maps to a system detecting whether it is in a test/evaluation environment versus production.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0043",
+      "atlas_name": "Craft Adversarial Data",
+      "attack_equivalent": "T1587.001 - Develop Capabilities: Malware",
+      "attack_tactic": "TA0042 - Resource Development",
+      "alignment_concept": "Adversarial Example Generation",
+      "description": "Creating inputs specifically designed to cause model misbehavior. ATLAS bridges ATT&CK's malware development to AI-specific adversarial input crafting.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0044",
+      "atlas_name": "Full ML Model Access",
+      "attack_equivalent": "T1078 - Valid Accounts (with elevated privileges)",
+      "attack_tactic": "TA0004 - Privilege Escalation",
+      "alignment_concept": "White-Box Model Access / Weight Extraction",
+      "description": "Gaining full access to model weights, architecture, and training configuration. Beyond black-box API access, this enables direct manipulation.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0047",
+      "atlas_name": "ML-Enabled Product or Service",
+      "attack_equivalent": "T1584 - Compromise Infrastructure",
+      "attack_tactic": "TA0042 - Resource Development",
+      "alignment_concept": "Weaponized AI Service",
+      "description": "Using a compromised or purpose-built ML-enabled product as an attack vector. In alignment, this maps to concerns about AI systems being used as components in harmful pipelines.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0048",
+      "atlas_name": "Agentic Compromise",
+      "attack_equivalent": "T1059 - Command and Scripting Interpreter",
+      "attack_tactic": "TA0002 - Execution",
+      "alignment_concept": "Agent Autonomy Exploitation",
+      "description": "Exploiting the autonomous capabilities of AI agents to perform unauthorized actions. ATLAS bridges ATT&CK's execution concepts to agent-specific autonomy concerns.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0049",
+      "atlas_name": "Exploit Public-Facing ML Model",
+      "attack_equivalent": "T1190 - Exploit Public-Facing Application",
+      "attack_tactic": "TA0001 - Initial Access",
+      "alignment_concept": "Public Agent Compromise",
+      "description": "Exploiting publicly accessible ML models. Directly bridges ATT&CK's public application exploitation to AI-specific attack surfaces.",
+      "direction": "atlas_bridges_both"
+    },
+    {
+      "atlas_id": "AML.T0051",
+      "atlas_name": "LLM Prompt Injection",
+      "attack_equivalent": "T1190 - Exploit Public-Facing Application",
+      "attack_tactic": "TA0001 - Initial Access",
+      "alignment_concept": "Prompt Injection / Instruction Override",
+      "description": "Injecting malicious instructions into LLM prompts. This is the most direct bridge: ATLAS codifies the AI-specific technique while ATT&CK provides the tactical context (Initial Access) and alignment provides the theoretical framing (instruction hierarchy violation).",
+      "direction": "atlas_bridges_both"
+    }
+  ]
+}
