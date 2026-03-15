@@ -2,7 +2,7 @@
 
 **Bridging cybersecurity and AI alignment. One framework, two communities.**
 
-*From [15 Research Lab](https://github.com/15researchlab)*
+*From [15 Research Lab](https://github.com/15-Research-Lab)*
 
 ---
 
@@ -95,7 +95,7 @@ Practical guides for practitioners crossing domains:
 
 ## Part of the Authensor Ecosystem
 
-This project is part of the [Authensor](https://github.com/AUTHENSOR/AUTHENSOR) open-source AI safety ecosystem, built by [15 Research Lab](https://github.com/15researchlab).
+This project is part of the [Authensor](https://github.com/AUTHENSOR/AUTHENSOR) open-source AI safety ecosystem, built by [15 Research Lab](https://github.com/15-Research-Lab).
 
 | Project | Description |
 |---------|-------------|
@@ -158,4 +158,4 @@ MIT License. See [LICENSE](LICENSE).
 
 ---
 
-*Built by [15 Research Lab](https://github.com/15researchlab). Bridging security and alignment, one mapping at a time.*
+*Built by [15 Research Lab](https://github.com/15-Research-Lab). Bridging security and alignment, one mapping at a time.*
